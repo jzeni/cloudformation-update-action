@@ -6,6 +6,7 @@ module CfnUpdate
   def self.run(opts)
     @opts = opts
 
+    validate_opts!
     update_stack
 
     stack.reload
@@ -69,6 +70,23 @@ module CfnUpdate
   end
 
   def self.client
-    @client ||= AwsClient.new(@opts[:access_key_id], @opts[:secret_access_key], @opts[:region])
+    @client ||= AwsClient.new(@opts[:access_key_id], @opts[:secret_access_key], @opts[:aws_region])
+  end
+
+  def self.validate_opts!
+    required_vars = [:access_key_id, :secret_access_key, :aws_region, :stack_name]
+
+    missing = []
+    required_vars.each do |var|
+      missing << var unless @opts[var]
+    end
+
+    raise "Variables #{missing.join(',')} are required." if missing.any?
+
+    raise 'At least one parameter must be specified' if @opts[:parameter_overrides].empty?
+
+    if @opts[:cancel_on_timeout] && !@opts[:follow_status]
+      raise 'Incompatible CANCEL_ON_TIMEOUT with given FOLLOW_STATUS value'
+    end
   end
 end

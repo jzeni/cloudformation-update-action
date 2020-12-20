@@ -6,10 +6,10 @@ require_relative 'cfn_update'
 opts = {
   access_key_id:        ENV['AWS_ACCESS_KEY_ID'],
   secret_access_key:    ENV['AWS_SECRET_ACCESS_KEY'],
-  region:               ENV['AWS_REGION'],
+  aws_region:           ENV['AWS_REGION'],
   stack_name:           ENV['STACK_NAME'],
-  parameter_overrides:  JSON(ENV['PARAMETER_OVERRIDES']),
-  capabilities:         JSON(ENV['CAPABILITIES']),
+  capabilities:         JSON(ENV['CAPABILITIES'] || "[]"),
+  parameter_overrides:  JSON(ENV['PARAMETER_OVERRIDES'] || "[]"),
   follow_status:        ENV['FOLLOW_STATUS'] == 'true',
   attempts_delay:       ENV['ATTEMPTS_DELAY'].to_i,
   max_attempts:         ENV['MAX_ATTEMPTS'].to_i,
