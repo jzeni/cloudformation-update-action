@@ -1,8 +1,9 @@
-name: 'CloudFormation Deploy Action'
-description: 'Deploy AWS CloudFormation Stack'
+name: 'CloudFormation Update'
+description: 'Update a stack specifying only changing parameters and verify the result.'
+author: Juan Andres Zeni (juanandreszeni@gmail.com)
 branding:
-  icon: 'upload-cloud'
-  color: 'orange'
+  icon: 'refresh-cw'
+  color: 'purple'
 runs:
   using: 'docker'
   image: 'Dockerfile'
