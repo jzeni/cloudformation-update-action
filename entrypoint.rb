@@ -18,7 +18,8 @@ opts = {
 
 begin
   CfnUpdate.run(opts)
+  puts "Stack updated successfully"
 rescue StandardError => error
-  puts error.message
+  puts "Error: #{error.message}"
   exit 1
 end
