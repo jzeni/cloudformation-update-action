@@ -27,7 +27,7 @@ module CfnUpdate
   end
 
   def self.follow_status
-    opts = { delay: @opts[:attemts_delay], max_attempts: @opts[:max_attempts] }
+    opts = { delay: @opts[:attempts_delay], max_attempts: @opts[:max_attempts] }
 
     stack.wait_until(opts) { |i| i.stack_status != 'UPDATE_IN_PROGRESS' }
   rescue Aws::Waiters::Errors::TooManyAttemptsError

@@ -11,8 +11,8 @@ opts = {
   capabilities:         JSON(ENV['CAPABILITIES'] || "[]"),
   parameter_overrides:  JSON(ENV['PARAMETER_OVERRIDES'] || "[]"),
   follow_status:        ENV['FOLLOW_STATUS'] == 'true',
-  attempts_delay:       ENV['ATTEMPTS_DELAY'].to_i,
-  max_attempts:         ENV['MAX_ATTEMPTS'].to_i,
+  attempts_delay:       (ENV['ATTEMPTS_DELAY'] || 5).to_i,
+  max_attempts:         (ENV['MAX_ATTEMPTS'] || 20).to_i,
   cancel_on_timeout:    ENV['CANCEL_ON_TIMEOUT'] == 'true'
 }
 
