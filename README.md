@@ -1,6 +1,6 @@
 # CloudFormation stack update
 
-A lightweight action for updating a CloudFormation stack **specifying only changing parameters**.
+A lightweight action to update a CloudFormation stack **specifying only changing parameters** and **keeping track of the result**.
 
 This action will:
 - read the current stack and use the current parameter values except the ones given to override.
