@@ -10,31 +10,20 @@ This action will:
 ## Usage
 
 ```
-name: Test deployment
-on:
-  workflow_dispatch:
-    inputs:
-      image_tag:
-        description: "Image tag to deploy"
-        required: true
-
-jobs:
-  deploy_job:
-    name: Deployment job
-    runs-on: ubuntu-latest
-    steps:
-      - uses: jzeni/cloudformation-update-action@master
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: us-east-1
-          CAPABILITIES: '["CAPABILITY_NAMED_IAM"]'
-          STACK_NAME: test-app
-          PARAMETER_OVERRIDES: '[{ "parameter_key": "AppImageTag", "parameter_value": "${{ github.event.inputs.image_tag }}" }]'
-          FOLLOW_STATUS: true
-          ATTEMPTS_DELAY: 5
-          MAX_ATTEMPTS: 20
-          CANCEL_ON_TIMEOUT: true
+...
+steps:
+  - uses: jzeni/cloudformation-update-action@master
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_REGION: us-east-1
+      CAPABILITIES: '["CAPABILITY_NAMED_IAM"]'
+      STACK_NAME: test-app
+      PARAMETER_OVERRIDES: '[{ "parameter_key": "AppImageTag", "parameter_value": "${{ github.event.inputs.image_tag }}" }]'
+      FOLLOW_STATUS: true
+      ATTEMPTS_DELAY: 5
+      MAX_ATTEMPTS: 20
+      CANCEL_ON_TIMEOUT: true
 ```
 
 ## Environment variables
@@ -61,7 +50,7 @@ This software is licensed under the MIT license.
 ## Contributing
 
 - Fork it
-- Create your feature branch (git checkout -b my-new-feature)
-- Commit your changes (git commit -am 'Add some feature')
-- Push to the branch (git push origin my-new-feature)
+- Create your feature branch (`git checkout -b my-new-feature`)
+- Commit your changes (`git commit -am 'Add some feature'`)
+- Push to the branch (`git push origin my-new-feature`)
 - Create new Pull Request
