@@ -1,4 +1,4 @@
-# CloudFormation update action
+# CloudFormation stack update
 
 A lightweight action for updating a CloudFormation stack **specifying only changing parameters**.
 
