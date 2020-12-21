@@ -1,4 +1,4 @@
-name: 'CloudFormation Update'
+name: 'CloudFormation stack update'
 description: 'Update a stack specifying only changing parameters and verify the result.'
 author: Juan Andres Zeni (juanandreszeni@gmail.com)
 branding:
