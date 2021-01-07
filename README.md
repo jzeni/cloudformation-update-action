@@ -34,8 +34,8 @@ steps:
 - `CAPABILITIES`: [JSON] required AWS capabilities _(optional)_
 - `STACK_NAME`: [String] the name of the stack to be updated
 - `PARAMETER_OVERRIDES`: [JSON] stack parameters to override. Specify only the ones that needs to be changed.
-- `FOLLOW_STATUS`: [Boolean] wait until stack update finishes and return the status. Default: `false`. _(optional)_
-- `ATTEMPTS_DELAY`: [Integer] seconds between each status. _(optional)_
+- `FOLLOW_STATUS`: [Boolean] wait until stack update finishes and return the status. Method: polling. Default: `false`. _(optional)_
+- `ATTEMPTS_DELAY`: [Integer] seconds between each status poll. _(optional)_
 - `MAX_ATTEMPTS`: [Integer] polling atempts limit. _(optional)_
 - `CANCEL_ON_TIMEOUT`: [Boolean] cancel update when a timeout occurs. Default: `false`. _(optional)_
 
