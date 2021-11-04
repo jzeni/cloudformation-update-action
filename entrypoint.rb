@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
+require 'aws-sdk-ecs'
 require 'aws-sdk-cloudformation'
 require_relative 'cfn_update'
 
@@ -8,6 +9,8 @@ opts = {
   secret_access_key:    ENV['AWS_SECRET_ACCESS_KEY'],
   aws_region:           ENV['AWS_REGION'],
   stack_name:           ENV['STACK_NAME'],
+  cluster_name:         ENV['CLUSTER_NAME'],
+  service_name:         ENV['SERVICE_NAME'],
   capabilities:         JSON(ENV['CAPABILITIES'] || "[]"),
   parameter_overrides:  JSON(ENV['PARAMETER_OVERRIDES'] || "[]"),
   follow_status:        ENV['FOLLOW_STATUS'] == 'true',
@@ -18,7 +21,7 @@ opts = {
 
 begin
   CfnUpdate.run(opts)
-  puts "Stack updated successfully"
+  puts 'Stack updated successfully'
 rescue StandardError => error
   puts "Error: #{error.message}"
   exit 1
