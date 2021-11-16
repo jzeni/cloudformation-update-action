@@ -20,7 +20,6 @@ steps:
       CAPABILITIES: '["CAPABILITY_NAMED_IAM"]'
       STACK_NAME: test-app
       CLUSTER_NAME: test-cluster
-      SERVICE_NAME: test-service
       PARAMETER_OVERRIDES: '[{ "parameter_key": "AppImageTag", "parameter_value": "${{ github.event.inputs.image_tag }}" }]'
       FOLLOW_STATUS: true
       ATTEMPTS_DELAY: 5
@@ -36,7 +35,6 @@ steps:
 - `CAPABILITIES`: [JSON] required AWS capabilities _(optional)_
 - `STACK_NAME`: [String] the name of the stack to be updated
 - `CLUSTER_NAME`: [String] the name of the cluster to be updated
-- `SERVICE_NAME`: [String] the name of the service to be updated
 - `PARAMETER_OVERRIDES`: [JSON] stack parameters to override. Specify only the ones that needs to be changed.
 - `FOLLOW_STATUS`: [Boolean] wait until stack update finishes and return the status. Method: polling. Default: `false`. _(optional)_
 - `ATTEMPTS_DELAY`: [Integer] seconds between each status poll. _(optional)_
