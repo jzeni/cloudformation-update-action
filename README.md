@@ -19,6 +19,7 @@ steps:
       AWS_REGION: us-east-1
       CAPABILITIES: '["CAPABILITY_NAMED_IAM"]'
       STACK_NAME: test-app
+      CLUSTER_NAME: test-cluster
       PARAMETER_OVERRIDES: '[{ "parameter_key": "AppImageTag", "parameter_value": "${{ github.event.inputs.image_tag }}" }]'
       FOLLOW_STATUS: true
       ATTEMPTS_DELAY: 5
@@ -33,6 +34,7 @@ steps:
 - `AWS_REGION`: [String] AWS region
 - `CAPABILITIES`: [JSON] required AWS capabilities _(optional)_
 - `STACK_NAME`: [String] the name of the stack to be updated
+- `CLUSTER_NAME`: [String] the name of the cluster to be updated
 - `PARAMETER_OVERRIDES`: [JSON] stack parameters to override. Specify only the ones that needs to be changed.
 - `FOLLOW_STATUS`: [Boolean] wait until stack update finishes and return the status. Method: polling. Default: `false`. _(optional)_
 - `ATTEMPTS_DELAY`: [Integer] seconds between each status poll. _(optional)_
@@ -40,7 +42,7 @@ steps:
 - `CANCEL_ON_TIMEOUT`: [Boolean] cancel update when a timeout occurs. Default: `false`. _(optional)_
 
 Notes:
-- If `FOLLOW_STATUS` is `true` the action will exit with a failure status when the update process fails, and succeed when tne update was successful.
+- If `FOLLOW_STATUS` is `true` the action will exit with a failure status when the update process fails, and succeed when the update was successful.
 - If `CANCEL_ON_TIMEOUT` is `true` the action will cancel the stack update and exit with a failure status.
 
 ## Licence
